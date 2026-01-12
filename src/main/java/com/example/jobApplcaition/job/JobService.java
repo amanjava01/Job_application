@@ -6,14 +6,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface JobService {
-       List<Job> findAll();
-       void createJob(Job job);
+    List<Job> findAll();
 
-         Job getById(Long id);
+    void createJob(Job job);
 
-          boolean deletedById(Long id);
+    Job getById(Long id);
 
-         boolean updateJob(Long id, Job updateJob);
+    boolean deletedById(Long id);
+
+    boolean updateJob(Long id, Job updateJob);
 
 
 }
