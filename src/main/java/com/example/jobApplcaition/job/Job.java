@@ -1,13 +1,22 @@
 package com.example.jobApplcaition.job;
 
-public class Job {
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "job_table")
+public class Job {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    public Job() {
+    }
+
 
     public Job(String location, String maxSalary, String minSalary, String description, String title, Long id) {
         this.location = location;
@@ -69,8 +78,7 @@ public class Job {
     }
 
 
-
-    public void getdata(){
+    public void getdata() {
         System.out.println("hello");
     }
 }

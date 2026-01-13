@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/jobs")
 public class JobController {
 
     private JobService jobService;
@@ -16,19 +17,18 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping
     public ResponseEntity<@NonNull List<Job>> findAll() {
 
         return ResponseEntity.ok(jobService.findAll());
     }
 
-    @PostMapping("/jobs")
-    public ResponseEntity<@NonNull String> createJob(@RequestBody Job job) {
+    @PostMapping
+    public ResponseEntity<@NonNull String> createJob(@RequestBody  Job job) {
         jobService.createJob(job);
         return new ResponseEntity<>("added successfully....", HttpStatus.OK);
     }
-
-    @GetMapping("/jobs/{id}")
+    @GetMapping(" /{id}")
     public ResponseEntity<@NonNull Job> getById(@PathVariable Long id) {
         Job job = jobService.getById(id);
         if (job != null) {
@@ -39,7 +39,7 @@ public class JobController {
     }
 
 
-    @DeleteMapping("/jobs/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<@NonNull String> deleteJob(@PathVariable Long id) {
         boolean deleted = jobService.deletedById(id);
         if (deleted) {
@@ -49,7 +49,7 @@ public class JobController {
 
     }
 
-    @PutMapping("/jobs/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<@NonNull String> updateJob(@PathVariable Long id, @RequestBody Job updateJob) {
 
         boolean update = jobService.updateJob(id, updateJob);
